@@ -496,7 +496,7 @@ bool parseSignal(const std::string& text, Signal& result)
         values.push_back(value);
 
         while (pos < n && std::isspace(static_cast<unsigned char>(text[pos]))){
-            poss++;
+            poss+;
         }
 
         if (pos == n){
@@ -505,9 +505,9 @@ bool parseSignal(const std::string& text, Signal& result)
         if (text[pos] != ','){
             return false;
         }
-        poss++;
+        poss+;
 
-    return = Signal(values);
+    return Signal(values);
     return true;
 
 }
