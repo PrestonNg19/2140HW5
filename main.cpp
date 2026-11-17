@@ -246,7 +246,7 @@ Signal::Signal() : samples(nullptr), length(0)
 //   Parameters: theLength -- the number of samples (theLength >= 0).
 //   Behavior:   Creates a signal with theLength samples, every one of
 //               which is 0.
-Signal::Signal(int theLength)
+Signal::Signal(int theLength) : samples(nullptr), length(theLength)
 {
     if (length > 0){
         samples = new int[length];
@@ -278,7 +278,7 @@ Signal::Signal(const std::vector<int>& values)
 //               other. Afterward the two signals are independent:
 //               changing a sample of one never changes the other, and
 //               destroying one never affects the other.
-Signal::Signal(const Signal& other)
+Signal::Signal(const Signal& other) : samples(nullptr), length(other.length)
 {
     if (length > 0){
         samples = new int[length];
@@ -408,11 +408,11 @@ Signal operator -(const Signal& s)
 //               empty signals are equal.
 bool operator ==(const Signal& a, const Signal& b)
 {
-    if (a.length != b,length){
+    if (a.length != b.length){
         return false;
     }
     for (int i = 0; i < a.length; i++){
-        if (a.samples[i] != b/samples[i]){
+        if (a.samples[i] != b.samples[i]){
             return false;
         }
     }
